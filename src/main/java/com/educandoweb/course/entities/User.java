@@ -3,11 +3,18 @@ package com.educandoweb.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class User implements Serializable{
-	
 	private static final long serialVersionUID = 1L;
 	
-	private Long idLong;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String name;
 	private String email;
 	private String phone;
@@ -16,21 +23,21 @@ public class User implements Serializable{
 	public User() {
 	}
 
-	public User(Long idLong, String name, String email, String phone, String password) {
+	public User(Long id, String name, String email, String phone, String password) {
 		super();
-		this.idLong = idLong;
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.password = password;
 	}
 
-	public Long getIdLong() {
-		return idLong;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdLong(Long idLong) {
-		this.idLong = idLong;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -67,7 +74,7 @@ public class User implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idLong);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -79,7 +86,7 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(idLong, other.idLong);
+		return Objects.equals(id, other.id);
 	}
 	
 
